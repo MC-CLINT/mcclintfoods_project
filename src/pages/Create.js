@@ -39,22 +39,23 @@ const { data, error } = await supabase
     setComment('')
     setRating('')
     setFormError(null)
-    navigate('/')
+    navigate('/home')
   }
 
 }
 
   return (
-    <div className="page create">
-      <form onSubmit={handleSubmit}>
+    <div className="page create custom-form">
+      <form onSubmit={handleSubmit} className="custom-form">
         <label>
           <span>Food Name:</span>
           <input 
-          id='name'
+            id='name'
             type="text" 
             required 
             onChange={(e) => setName(e.target.value)} 
             value={name} 
+            className="custom-input"
           />
         </label>
         <label>
@@ -63,6 +64,7 @@ const { data, error } = await supabase
             required 
             onChange={(e) => setComment(e.target.value)} 
             value={comment} 
+            className="custom-textarea"
           ></textarea>
         </label>
         <label>
@@ -72,11 +74,11 @@ const { data, error } = await supabase
             required 
             onChange={(e) => setRating(e.target.value)} 
             value={rating} 
+            className="custom-input"
           />
         </label>
-        {formError && <p className="error">{formError}</p>}
-        <button className="btn">Add New Food</button>
-
+        {formError && <p className="error custom-error">{formError}</p>}
+        <button className="btn custom-btn">Add New Food</button>
       </form>
     </div>
   )

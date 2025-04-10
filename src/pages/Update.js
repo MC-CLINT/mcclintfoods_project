@@ -27,7 +27,7 @@ const handleSubmit = async (e) => {
 
   if (data) {
     console.log(data);
-    navigate('/');
+    navigate('/home');
   }
 
   if (error) {

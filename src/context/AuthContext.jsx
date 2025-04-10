@@ -30,11 +30,13 @@ export const AuthContextProvider = ({ children }) => {
             password,
         });
         if (error) {
+            window.alert('Error signing in, please try again'); 
             console.error("Error signing in:", error);
             return {success: false, error};
         }
         return {success: true, data};
     } catch (error) {
+        window.alert('Error signing in, please try again');
         console.error("Error signing in:", error);
         return {success: false, error};
     }

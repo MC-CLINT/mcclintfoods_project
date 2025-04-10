@@ -28,14 +28,14 @@ const Login = () => {
         const result = await signInUser({ email, password });
 
         if (result.success){
+            console.log(result);
             setLoading(false);
             navigate('/home'); 
         }
     }
     catch (error) {
         setLoading(false);
-        console.error("Error signing in:", error);
-        setError(error.message);
+        window.alert('Error signing in, please try again');
     }
     }
 
