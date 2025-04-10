@@ -1,11 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+        const [password, setPassword] = useState('');
+        const [error, setError] = useState(null);
+        const [loading, setLoading] = useState('');
     const navigate = useNavigate();
 
-    const { session, signInWithGoogle } = useAuth();
+    const { session, signInWithGoogle, signInUser } = useAuth();
         console.log(session);
 
     const handleGoogleSignIn = () => {
@@ -16,34 +21,42 @@ const Login = () => {
         console.log('Sign in with Google');
     };
 
-    const handleSubmit = (e) => {
+    const handleSignInSubmit = async (e) => {
         e.preventDefault();
-        const username = e.target.username.value;
-        const password = e.target.password.value;
+        setLoading(true);
+    try {
+        const result = await signInUser({ email, password });
 
-
-        navigate('/home'); 
-    
-        console.log('Username:', username, 'Password:', password);
-        // Add your login logic here
-    };
+        if (result.success){
+            setLoading(false);
+            navigate('/home'); 
+        }
+    }
+    catch (error) {
+        setLoading(false);
+        console.error("Error signing in:", error);
+        setError(error.message);
+    }
+    }
 
     return (
         <div className='login-div'>
             <p className='Welcome'>Welcome back!  <br /> Please login to your account.</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSignInSubmit }>
                 <div className='username-div'>
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="email">Email:</label>
                     <input
+                    onChange={(e) => setEmail(e.target.value)}
                         type="text"
-                        id="username"
-                        name="username"
+                        id="email"
+                        name="email"
                         required
                     />
                 </div>
                 <div className='password-div'>
                     <label htmlFor="password">Password:</label>
                     <input
+                    onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         id="password"
                         name="password"
@@ -53,9 +66,7 @@ const Login = () => {
                 <button type="submit" className='login-button'>
                     Login
                 </button>
-                <button className='google-button' type="button"
-                onClick={handleGoogleSignIn}
-            >
+            <button className='google-button' type="button" onClick={handleGoogleSignIn}>
                 Sign in using Google
             </button>
             </form>
