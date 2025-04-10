@@ -134,3 +134,118 @@ form input, form textarea {
 .firstState{
   display: inline-block;
 }
+
+.Welcome{
+  font-size: 20px;
+  font-family: 'Poppins';
+  color: var(--secondary);
+  text-align: center;
+}
+
+.Welcome1{
+  font-size: 20px;
+  font-family: 'Poppins';
+  color: var(--primary);
+  text-align: center;
+  margin-top: 10px;
+}
+.login-div{
+  width: 450px;
+  height: 500px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10%;
+  left: 33%;
+  background: var(--primary);
+  display: grid;
+  grid-template-columns: 1fr ;
+  justify-content: center;
+  align-items: center;
+
+@media (max-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+  .login-div, .signup-div {
+    width: 80%;
+    left: 10%;
+  }
+}
+  border-radius: 30px;
+}
+ form{
+  display: grid;
+  width: 300px;
+  height: 300px;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  margin-bottom: 10px;
+
+ }
+
+ form label{
+  font-size: 15px;
+  font-family: 'Poppins';
+  margin-bottom: 20px;
+ }
+
+form input{
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.google-button{
+  background: #4285F4;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-button, .signup-button{
+  color: #fff;
+  background: var(--primary);
+  font: 'Poppins';
+  font-size: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+.signup-button{
+  background: var(--secondary);
+}
+
+.signup-div{
+  width: 450px;
+  height: 500px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10%;
+  left: 33%;
+  border-radius: 30px;
+  background: #fff;
+  margin-top: 20px;
+  }
+
+  .email-div, .Password-div{
+    margin-top: 10px;
+    width: 300px;
+    color: var(--secondary);
+  }
+  
