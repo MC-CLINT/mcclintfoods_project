@@ -16,63 +16,42 @@ function App() {
     return (
       <BrowserRouter>
       <nav>
-        <h1>McCLINT Foods</h1>
-        <Routes>
-        <Route
-          path="/"
-          element={
-          <>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Login</Link>
-          </>
-          }
-        />
-        <Route
-          path="/signup"
-          element={null} // No links on the signup page
-        />
-        <Route
-          path="/login"
-          element={
-          <>
-            <Link to="/signup">Sign Up</Link>
-          </>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-          <>
-            <Link to="/create">Add New Food</Link>
-            <Link to="/signup" onClick={signOutUser}>Sign Out</Link>
-          </>
-          }
-        />
-        <Route
-          path="/create"
-          element={
-          <>
-            <Link to="/home">Home</Link>
-          </>
-          }
-        />
-        <Route
-          path="/:id"
-          element={
-          <>
-            <Link to="/home">Home</Link>
-          </>
-          }
-        />
-        </Routes>
+      <h1>McCLINT Foods</h1>
+      <Routes>
+      <Route
+        path="/home"
+        element={
+        <>
+        <Link to="/create">Add New Food</Link>
+        <Link to="/signup" onClick={signOutUser}>Sign Out</Link>
+        </>
+        }
+      />
+      <Route
+        path="/create"
+        element={
+        <>
+        <Link to="/home">Home</Link>
+        </>
+        }
+      />
+      <Route
+        path="/:id"
+        element={
+        <>
+        <Link to="/home">Home</Link>
+        </>
+        }
+      />
+      </Routes>
       </nav>
       <Routes>
-        <Route path="/" element={<SignUp />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/:id" element={<Update />} />
+      <Route path="/" element={<SignUp />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/create" element={<Create />} />
+      <Route path="/:id" element={<Update />} />
       </Routes>
       </BrowserRouter>
     );
