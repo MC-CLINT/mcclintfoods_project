@@ -30,14 +30,30 @@ export const AuthContextProvider = ({ children }) => {
             password,
         });
         if (error) {
-            window.alert('Error signing in, please try again'); 
+            window.alert('Wrong Credentials, please try again'); 
             console.error("Error signing in:", error);
             return {success: false, error};
         }
         return {success: true, data};
     } catch (error) {
-        window.alert('Error signing in, please try again');
+        window.alert('Wrong Credentials, please try again');
         console.error("Error signing in:", error);
+        return {success: false, error};
+    }
+};
+
+//Signing Out a user
+const signOutUser = async () => {
+    try {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            console.error("Error signing out:", error);
+            return {success: false, error};
+        }
+        return {success: true};
+    }
+    catch (error) {
+        console.error("Error signing out:", error);
         return {success: false, error};
     }
 };
@@ -72,7 +88,7 @@ const signInWithGoogle = async () => {
      } , []);
 
     return (
-        <AuthContext.Provider value={{ session, signUpNewUser, signInUser, signInWithGoogle }}> 
+        <AuthContext.Provider value={{ session, signUpNewUser, signInUser, signInWithGoogle, signOutUser }}> 
             {children}
         </AuthContext.Provider>
     );

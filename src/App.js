@@ -6,16 +6,65 @@ import Create from "./pages/Create"
 import Update from "./pages/Update"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
+import { useAuth } from "./context/AuthContext";
 
 
 function App() {
-  return (
-    <BrowserRouter>
+     const { session, signOutUser } = useAuth();
+            console.log(session);
+
+    return (
+      <BrowserRouter>
       <nav>
         <h1>McCLINT Foods</h1>
-        <Link to="/">Sign Up</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/create">Add New Food</Link>
+        <Routes>
+        <Route
+          path="/"
+          element={
+          <>
+            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">Login</Link>
+          </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={null} // No links on the signup page
+        />
+        <Route
+          path="/login"
+          element={
+          <>
+            <Link to="/signup">Sign Up</Link>
+          </>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+          <>
+            <Link to="/create">Add New Food</Link>
+            <Link to="/signup" onClick={signOutUser}>Sign Out</Link>
+          </>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+          <>
+            <Link to="/home">Home</Link>
+          </>
+          }
+        />
+        <Route
+          path="/:id"
+          element={
+          <>
+            <Link to="/home">Home</Link>
+          </>
+          }
+        />
+        </Routes>
       </nav>
       <Routes>
         <Route path="/" element={<SignUp />} />
@@ -25,8 +74,8 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Update />} />
       </Routes>
-    </BrowserRouter>
-  );
-}
+      </BrowserRouter>
+    );
+  }
 
 export default App;

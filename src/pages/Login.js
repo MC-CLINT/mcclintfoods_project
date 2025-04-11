@@ -15,9 +15,6 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-           
-       
-        // Add your Google sign-in logic here
         console.log('Sign in with Google');
     };
 
@@ -35,7 +32,7 @@ const Login = () => {
     }
     catch (error) {
         setLoading(false);
-        window.alert('Error signing in, please try again');
+        window.alert('Wrong Credentials, please try again');
     }
     }
 

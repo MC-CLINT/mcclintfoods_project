@@ -62,7 +62,7 @@ const handleSubmit = async (e) => {
   }, [id, navigate])
 
   return (
-    <div className="page update">
+    <div className="page-update">
     <form onSubmit={handleSubmit}>
         <label>
           <span>Food Name:</span>
@@ -76,7 +76,7 @@ const handleSubmit = async (e) => {
         </label>
         <label>
           <span>Food Comment:</span>
-          <textarea 
+          <textarea  className="food-comment"
             required 
             onChange={(e) => setComment(e.target.value)} 
             value={comment} 
